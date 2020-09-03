@@ -31,10 +31,7 @@
       <img src="@/assets/logoBot_3.png" alt="logo">
       <img class="img-4" src="@/assets/logoBot_4.png" alt="logo">
     </div>
-    <div class="a-box">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms Of Use</a>
-    </div>
+
   </div>
 </div>
 </template>
@@ -186,18 +183,7 @@ export default {
     color: #393939;
   }
 
-  a{
-    margin: 0 47px;
-    display: flex;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    text-decoration-line: underline;
-    color: #393939;
-  }
+
 
   .img-container{
     display: flex;
@@ -212,6 +198,19 @@ export default {
     margin-top: 120px;
     display: flex;
     justify-content: center;
+
+      a{
+        margin: 0 47px;
+        display: flex;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        text-decoration-line: underline;
+        color: #393939;
+      }
   }
 }
 </style>

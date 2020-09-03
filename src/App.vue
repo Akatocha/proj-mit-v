@@ -8,6 +8,12 @@
       <div class="step-box"></div>
         <router-view/>
     </div>
+    <div class="main-futer">
+      <div class="a-box">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms Of Use</a>
+      </div>
+    </div>
 
 
   </div>
@@ -78,5 +84,32 @@ position: absolute;
 top: 58px;
 width: 130px;
 right: 100px;
+}
+
+.main-futer{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.a-box{
+  position: absolute;
+  bottom: 80px;
+  left: 38%;
+    display: flex;
+    justify-content: center;
+
+      a{
+        margin: 0 47px;
+        display: flex;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        text-decoration-line: underline;
+        color: #393939;
+      }
 }
 </style>
