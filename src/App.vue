@@ -1,32 +1,82 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+      <img class="logo-right" src="@/assets/logo_transparent_1.svg" alt="logo">
+      <img class="phone-left" src="@/assets/Phone.svg" alt="phone">
+      <img class="number-left" src="@/assets/number.svg" alt="phone">
+
+    <div class="main-box">
+      <div class="step-box"></div>
+        <router-view/>
     </div>
-    <router-view/>
+
+
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+*, 
+::before, 
+::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-box{
+  margin: auto;
+  margin-top: 110px;
+  max-width: 1140px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .step-box{
+    height: 22px;
+    width: 100%;
+  }
+
+    h1{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 54px;
+      color: #393939;
+      margin-top: 135px;
+      margin-bottom: 16px;
+    }
+
+    h4{
+      color: #393939;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 33px;
+    }
 }
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+      // ниже найстройка лого с лева и права
+.logo-right{
+position: absolute;
+width: 154px;
+height: 84px;
+left: 100px;
+top: 25px;
+}
+.phone-left{
+position: absolute;
+width: 18px;
+transform: rotate(-6.14deg);
+top: 56px;
+right: 238px;
+}
+.number-left{
+position: absolute;
+top: 58px;
+width: 130px;
+right: 100px;
 }
 </style>
