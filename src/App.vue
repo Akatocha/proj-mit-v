@@ -5,7 +5,16 @@
       <img class="number-left" src="@/assets/number.svg" alt="phone">
 
     <div class="main-box">
-      <div class="step-box"></div>
+      <div class="step-box">
+        <div v-if="checkRoutLeft" class="left-step">
+          <!-- <img class="arow" src="@/assets/arow.svg" alt=""> -->
+          <router-link tag="span"  :to='routNavigator'
+          class="spanL">Previous Step</router-link>
+        </div>
+        <div v-if="checkRoutRight" class="right-step">
+          <span class="spanR">Step 1/4</span>
+        </div>
+      </div>
         <router-view/>
     </div>
     <div class="main-futer">
@@ -19,6 +28,46 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      key: null
+    }
+  },
+  computed: {
+    checkRoutLeft() {
+      if (this.$route.path !== '/'){
+        return true
+      }else{
+        return false
+      }
+    },
+    checkRoutRight(){
+      if (this.$route.path !== '/' && this.$route.path !== '/end'){
+        return true
+      }else{
+        return false
+      }
+    },
+    routNavigator(){
+      if (this.$route.path == '/step1'){
+        return '/'
+      }else if(this.$route.path == '/step2'){
+        return '/step1'
+      }else if(this.$route.path == '/step3'){
+        return '/step2'
+      }else if(this.$route.path == '/step4'){
+        return '/step3'
+      }else{
+        return '/step4'
+      }
+
+    }
+  },
+}
+</script>
+
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 *, 
@@ -27,6 +76,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+    :focus{
+      outline: none;
+    }
+.arow{
+  color: #393939;
+  height: 10px;
+  background: black;
 }
 .main-box{
   margin: auto;
@@ -40,6 +97,28 @@
   .step-box{
     height: 22px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .spanL{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #393939;
+      cursor: pointer;
+    }
+    .spanR{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #5FB763;
+      cursor: default;
+    }
   }
 
     h1{
@@ -62,7 +141,6 @@
       line-height: 33px;
     }
 }
-
 
       // ниже найстройка лого с лева и права
 .logo-right{

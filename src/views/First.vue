@@ -14,10 +14,10 @@
         <span class="gray-text">DELIVERY TO</span>
         <span class="number-tex">80124</span>
       </div>
-      <div class="btn">
+      <router-link tag="span" class="btn" to="/step1">
         <span>Get started</span>
         <img src="@/assets/arow.svg" alt="arow">
-      </div>
+      </router-link>
 
     </div>
     <p class="text-second">It will only take 30 seconds</p>
