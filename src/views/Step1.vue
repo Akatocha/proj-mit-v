@@ -2,17 +2,23 @@
   <div>
     <h1>What car you shipping?</h1>
     <div class="input-box">
-      <select class="inp-text">
-        <option  value="start">Year</option>
-        <option value="srt">1896</option>
+      <select v-model="year" class="inp-text">
+        <option 
+        v-for="(year, key) in modelData" 
+        :key="key"
+        :value="key">{{key}} </option>
       </select>
-      <select class="inp-text">
-        <option   value="Make">Make</option>
-        <option value="srt">1896</option>
+      <select v-model="make" class="inp-text">
+        <option 
+        v-for="(make, key) in modelData[year]"
+        :key="key"
+        :value="key">{{key}} </option>
       </select>
-      <select class="inp-text">
-        <option  value="Model">Model</option>
-        <option value="srt">1896</option>
+      <select v-model="model" class="inp-text">
+        <option 
+        v-for="make in modelData[year][make]" 
+        :key="make"
+        :value="make">{{make}}</option>
       </select>
     </div>
   </div>
@@ -20,7 +26,44 @@
 
 <script>
   export default {
-    
+    data() {
+      return {
+        year: 'Year',
+        make: 'Make',
+        model: 'Model',
+        modelData: {
+          'Year': {
+            'Make':{
+              'Model': 'Model'
+            }
+          },
+          '1862': {
+            'Toyota': {
+              'toyota_1': 'toyota_1', 
+              'toyota_2': 'toyota_2', 
+              'toyota_3': 'toyota_3', 
+              'toyota_4': 'toyota_4', 
+            },
+            'Bmv': {
+              'bmv_1': 'bmv_1', 
+              'bmv_2': 'bmv_2', 
+              'bmv_3': 'bmv_3', 
+              'bmv_4': 'bmv_4', 
+            },
+
+          },
+          '1922':{
+            'Mers': {
+              'mers_1': 'mers_1', 
+              'mers_2': 'mers_2', 
+              'mers_3': 'mers_3', 
+              'mers_4': 'mers_4', 
+            },
+          }
+        }
+
+      }
+    },
   }
 </script>
 
