@@ -36,6 +36,9 @@
         </div>
       </div>
     </div>
+      <router-link tag="span" class="btn" to="/step2">
+        Get started
+      </router-link>
   </div>
 </template>
 
