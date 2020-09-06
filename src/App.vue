@@ -1,30 +1,27 @@
 <template>
   <div>
-    <a href="/"><img class="logo-right" src="@/assets/logo_main.png" alt="logo"></a>
-      <img class="phone-left" src="@/assets/Phone.svg" alt="phone">
-      <img class="number-left" src="@/assets/number.svg" alt="phone">
-
+    <div id="main-header">
+      <a href="/"><img class="logo" src="@/assets/logo_main.png" alt="QuoteBooster"></a>
+      <span class="phone-number">904 - 297 -1778</span>
+    </div>
     <div class="main-box">
       <div class="step-box">
         <div v-if="checkRoutLeft" class="left-step">
           <!-- <img class="arow" src="@/assets/arow.svg" alt=""> -->
           <router-link tag="span"  :to='routNavigator'
-          class="spanL">Previous Step</router-link>
+          class="spanL"><i><</i> Previous Step</router-link>
         </div>
         <div v-if="checkRoutRight" class="right-step">
           <span class="spanR">Step 1/4</span>
         </div>
       </div>
         <router-view/>
-    </div>
-    <div class="main-futer">
-      <div class="a-box">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms Of Use</a>
-      </div>
-    </div>
 
-
+        <div id="main-footer">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Use</a>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +79,7 @@ export default {
     }
 body{
   font-family: Poppins;
+  color: #393939;
 }
 .arow{
   color: #393939;
@@ -89,13 +87,19 @@ body{
   background: black;
 }
 .main-box{
-  margin: auto;
-  margin-top: 110px;
-  max-width: 1140px;
-  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1140px;
+  height: calc(100vh - 280px);
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .step-box{
     height: 22px;
@@ -104,6 +108,7 @@ body{
     justify-content: space-between;
 
     .spanL{
+      display: flex;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -111,6 +116,12 @@ body{
       text-align: center;
       color: #393939;
       cursor: pointer;
+      outline: none;
+      i{
+        font-size: 21px;
+        font-style: initial;
+        margin-right: 6px;
+      }
     }
     .spanR{
       font-style: normal;
@@ -128,7 +139,6 @@ body{
       font-size: 36px;
       line-height: 54px;
       color: #393939;
-      margin-top: 135px;
       margin-bottom: 16px;
     }
 
@@ -138,46 +148,46 @@ body{
       font-weight: 500;
       font-size: 22px;
       line-height: 33px;
+      margin-bottom: 53px;
     }
 }
 
-      // ниже найстройка лого с лева и права
-.logo-right{
-position: absolute;
-width: 154px;
-height: 84px;
-left: 100px;
-top: 25px;
-}
-.phone-left{
-position: absolute;
-width: 18px;
-transform: rotate(-6.14deg);
-top: 56px;
-right: 238px;
-}
-.number-left{
-position: absolute;
-top: 58px;
-width: 130px;
-right: 100px;
-}
-
-.main-futer{
+#main-header{
   display: flex;
-  flex-direction: column;
-  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px 85px 100px;
+  .logo{
+    width: 155px;
+  }
+
+  .phone-number {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+
+    &:before{
+      display: block;
+      content: ' ';
+      width: 18px;
+      height: 19px;
+      margin-right: 15px;
+      background: url("data:image/svg+xml,%3Csvg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.5692 13.6097C15.0386 13.061 14.1884 12.2747 13.5316 12.2621C13.132 12.2545 12.7148 12.6366 12.3022 12.999C12.2198 13.0528 11.5908 13.5341 11.5117 13.5673C11.094 13.7392 10.1777 13.8748 9.5655 13.4169C8.97593 12.9746 8.02913 12.1402 7.25405 11.3661C6.50671 10.5631 5.7088 9.58682 5.28883 8.98013C4.8511 8.35176 5.01965 7.44014 5.20435 7.02692C5.23821 6.95248 5.68264 6.37308 5.78167 6.23881L5.80015 6.25705C6.17684 5.85689 6.57253 5.44908 6.57947 5.05272C6.59004 4.39299 5.83579 3.51544 5.30516 2.96561C4.77441 2.41467 3.93923 1.44017 2.97185 1.69481C2.60756 1.79019 2.30269 1.95672 2.00839 2.18055L1.99861 2.17149C1.9824 2.18679 1.96645 2.20237 1.95075 2.21822L1.92508 2.23559L1.92883 2.23968C1.76334 2.40134 1.28944 2.85016 1.23637 2.90981C0.660452 3.55729 -0.15346 5.02383 0.852968 7.396C1.59998 9.15883 3.00517 11.1723 4.83881 13.1644L4.83093 13.1731C4.92057 13.2691 5.01132 13.3549 5.10387 13.4472C5.19121 13.5424 5.27735 13.6365 5.36675 13.7303L5.37681 13.7213C7.30021 15.6262 9.26133 17.1034 10.9931 17.9129C13.3245 19.0018 14.8166 18.2379 15.4843 17.6861C15.5469 17.6333 16.0171 17.1703 16.1769 17.0171L16.1817 17.0211C16.1875 17.0137 16.1909 17.0044 16.1989 16.9968C16.2133 16.983 16.2276 16.9691 16.2418 16.9551L16.2343 16.9469C16.4699 16.6586 16.6513 16.3581 16.7596 15.9924C17.0428 15.0303 16.0999 14.1606 15.5692 13.6097Z' fill='%23393939'/%3E%3C/svg%3E%0A");
+      transform: rotate(-6.14deg);
+    }
+  }
+
 }
 
-.a-box{
-  position: absolute;
-  bottom: 80px;
-  left: 38%;
-    display: flex;
-    justify-content: center;
-
+#main-footer{
+  display: flex;
+  justify-content: center;
+  bottom: 85px;
+  width: 100%;
+  margin-top: 70px;
       a{
-        margin: 0 47px;
+        margin: 0 45px;
         display: flex;
         font-style: normal;
         font-weight: 500;
@@ -220,5 +230,18 @@ right: 100px;
   }
 }
 
+
+.desc{
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 36px;
+  text-align: center;
+  max-width: 600px;
+
+  .mail-link{
+    color: #5FB763;
+    text-decoration: none;
+  }
+}
 
 </style>

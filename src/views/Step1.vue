@@ -1,44 +1,44 @@
 <template>
   <div>
-    <h1>What car you shipping?</h1>
-    <div v-for="repeat in counterArrInput" :key="repeat"
-    class="input-box">
-      <select v-model="year" class="inp-text">
-        <option 
-        v-for="(year, key) in modelData" 
-        :key="key"
-        :value="key">{{key}} </option>
-      </select>
-      <select v-model="make" class="inp-text">
-        <option 
-        v-for="(make, key) in modelData[year]"
-        :key="key"
-        :value="key">{{key}} </option>
-      </select>
-      <select v-model="model" class="inp-text">
-        <option 
-        v-for="make in modelData[year][make]" 
-        :key="make"
-        :value="make">{{make}}</option>
-      </select>
-      <div class="checkbox-box">
-        <div class="checkbox-container">
-          <input type="checkbox">
-          <span>Inoperable</span>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox">
-          <span>Modified</span>
-        </div>
-        <div class="checkbox-container" v-if="btnShow(repeat)">
-          <button @click="addcounterArrInput" >+</button>
-          <span>Add another vehicle</span>
+    <div class="content">
+      <h1>What car you shipping?</h1>
+      <div v-for="repeat in counterArrInput" :key="repeat"
+      class="input-box">
+        <select v-model="year" class="inp-text">
+          <option
+          v-for="(year, key) in modelData"
+          :key="key"
+          :value="key">{{key}} </option>
+        </select>
+        <select v-model="make" class="inp-text">
+          <option
+          v-for="(make, key) in modelData[year]"
+          :key="key"
+          :value="key">{{key}} </option>
+        </select>
+        <select v-model="model" class="inp-text">
+          <option
+          v-for="make in modelData[year][make]"
+          :key="make"
+          :value="make">{{make}}</option>
+        </select>
+        <div class="checkbox-box">
+          <div class="checkbox-container">
+            <input type="checkbox">
+            <span>Inoperable</span>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox">
+            <span>Modified</span>
+          </div>
+          <div class="checkbox-container" v-if="btnShow(repeat)">
+            <button @click="addcounterArrInput" >+</button>
+            <span>Add another vehicle</span>
+          </div>
         </div>
       </div>
+        <router-link tag="span" class="btn" to="/step2">Next step</router-link>
     </div>
-      <router-link tag="span" class="btn" to="/step2">
-        Get started
-      </router-link>
   </div>
 </template>
 
