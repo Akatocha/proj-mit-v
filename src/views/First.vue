@@ -15,7 +15,7 @@
         <span class="number-tex">80124</span>
       </div>
       <router-link tag="span" class="btn" to="/step1">
-        <span>Get started </span>
+        Get started
       </router-link>
 
     </div>

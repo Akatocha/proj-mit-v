@@ -7,7 +7,7 @@
       to you the email address you indicated
       <a href="mailto:mail_user@gmail.com">mail_user@gmail.com</a>
     </p>
-    <a class="btn" href="#">Go to my profile</a>
+    <a class="btn without-arrow" href="#">Go to my profile</a>
   </div>
 </template>
 

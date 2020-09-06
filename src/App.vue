@@ -191,42 +191,33 @@ right: 100px;
 
 
 .btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 53px;
   width: 270px;
   background: #5FB763;
   box-shadow: 0 2.77551px 15px #B1EFB4;
   border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
 
-  span{
-    display: flex;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #FFFFFF;
-  }
-
-  &:before{
-    display: inline-block;
+  &:after{
     width: 24px;
-    height: 24px;
+    font-weight: 400;
     content: '>';
     font-style: initial;
     font-size: 24px;
+    line-height: 1;
+    margin-left: 9px;
   }
-}
 
-a.btn{
-  text-decoration: none;
-  color: #fff;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  &.without-arrow:after{
+    display: none;
+  }
 }
 
 
