@@ -15,8 +15,7 @@
         <span class="number-tex">80124</span>
       </div>
       <router-link tag="span" class="btn" to="/step1">
-        <span>Get started</span>
-        <img src="@/assets/arow.svg" alt="arow">
+        Get started
       </router-link>
 
     </div>
@@ -97,33 +96,6 @@ export default {
       }
     }
 
-    .btn{
-      height: 53px;
-      width: 270px;
-      background: #5FB763;
-      box-shadow: 0px 2.77551px 15px #B1EFB4;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      span{
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        color: #FFFFFF;
-      }
-
-      img{
-        color: #FFFFFF;
-        height: 12px;
-        margin-left: 8px;
-      }
-    }
-    
     .zip-text{
       font-family: Poppins;
       font-style: normal;

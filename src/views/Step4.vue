@@ -1,6 +1,8 @@
 <template>
   <div>
-    step 4  
+    step 4
+
+    <a class="btn" href="#">Go to my profile</a>
   </div>
 </template>
 

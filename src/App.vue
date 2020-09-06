@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img class="logo-right" src="@/assets/logo_transparent_1.svg" alt="logo">
+    <a href="/"><img class="logo-right" src="@/assets/logo_main.png" alt="logo"></a>
       <img class="phone-left" src="@/assets/Phone.svg" alt="phone">
       <img class="number-left" src="@/assets/number.svg" alt="phone">
 
@@ -80,6 +80,9 @@ export default {
     :focus{
       outline: none;
     }
+body{
+  font-family: Poppins;
+}
 .arow{
   color: #393939;
   height: 10px;
@@ -101,7 +104,6 @@ export default {
     justify-content: space-between;
 
     .spanL{
-      font-family: Poppins;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -111,7 +113,6 @@ export default {
       cursor: pointer;
     }
     .spanR{
-      font-family: Poppins;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
@@ -122,7 +123,6 @@ export default {
   }
 
     h1{
-      font-family: Poppins;
       font-style: normal;
       font-weight: bold;
       font-size: 36px;
@@ -134,7 +134,6 @@ export default {
 
     h4{
       color: #393939;
-      font-family: Poppins;
       font-style: normal;
       font-weight: 500;
       font-size: 22px;
@@ -180,7 +179,6 @@ right: 100px;
       a{
         margin: 0 47px;
         display: flex;
-        font-family: Poppins;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
@@ -190,4 +188,37 @@ right: 100px;
         color: #393939;
       }
 }
+
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 53px;
+  width: 270px;
+  background: #5FB763;
+  box-shadow: 0 2.77551px 15px #B1EFB4;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:after{
+    width: 24px;
+    font-weight: 400;
+    content: '>';
+    font-style: initial;
+    font-size: 24px;
+    line-height: 1;
+    margin-left: 9px;
+  }
+
+  &.without-arrow:after{
+    display: none;
+  }
+}
+
+
 </style>
