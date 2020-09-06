@@ -1,38 +1,40 @@
 <template>
-<div>
-  <div class="first-main">
-    <h1>Quickly Compare Cheap Car Shipping Quotes</h1>
-    <h4>Save an average of 27% & make a fully informed decision</h4>
-    <div class="supra-button-box">
-    <div class="buton-box">
-      <div class="gray-text-box-1">
-      <span class="gray-text">PICKUP FROM</span>
-        <input class="zip-text" placeholder="Enter ZIP Code or City" type="text">
-      </div>
-      <div class="gray-text-box-2">
-        <hr>
-        <span class="gray-text">DELIVERY TO</span>
-        <span class="number-tex">80124</span>
-      </div>
-      <router-link tag="span" class="btn" to="/step1">
-        Get started
-      </router-link>
+  <div>
+    <div class="container">
+      <div class="first-main">
+        <h1>Quickly Compare Cheap Car Shipping Quotes</h1>
+        <h4>Save an average of 27% & make a fully informed decision</h4>
+        <div class="supra-button-box">
+        <div class="buton-box">
+          <div class="gray-text-box-1">
+          <span class="gray-text">PICKUP FROM</span>
+            <input class="zip-text" placeholder="Enter ZIP Code or City" type="text">
+          </div>
+          <div class="gray-text-box-2">
+            <hr>
+            <span class="gray-text">DELIVERY TO</span>
+            <span class="number-tex">80124</span>
+          </div>
+          <router-link tag="span" class="btn" to="/step1">
+            Get started
+          </router-link>
 
-    </div>
-    <p class="text-second">It will only take 30 seconds</p>
+        </div>
+        <p class="text-second">It will only take 30 seconds</p>
+        </div>
+      </div>
+      <div class="futer">
+        <p>In Compliance With:</p>
+        <div class="img-container">
+          <img src="@/assets/logoBot_1.png" alt="logo">
+          <img src="@/assets/logoBot_2.png" alt="logo">
+          <img src="@/assets/logoBot_3.png" alt="logo">
+          <img class="img-4" src="@/assets/logoBot_4.png" alt="logo">
+        </div>
+
+      </div>
     </div>
   </div>
-  <div class="futer">
-    <p>In Compliance With:</p>
-    <div class="img-container">
-      <img src="@/assets/logoBot_1.png" alt="logo">
-      <img src="@/assets/logoBot_2.png" alt="logo">
-      <img src="@/assets/logoBot_3.png" alt="logo">
-      <img class="img-4" src="@/assets/logoBot_4.png" alt="logo">
-    </div>
-
-  </div>
-</div>
 </template>
 
 <script>
@@ -59,7 +61,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 
     .gray-text-box-1{
@@ -76,7 +78,7 @@ export default {
       margin-right: 52px;
 
       .number-tex{
-        font-family: Poppins;
+        
         font-style: normal;
         font-weight: 600;
         font-size: 17px;
@@ -97,7 +99,7 @@ export default {
     }
 
     .zip-text{
-      font-family: Poppins;
+      
       font-style: normal;
       font-weight: 600;
       font-size: 17px;
@@ -112,7 +114,7 @@ export default {
 
 
     .gray-text{
-      font-family: Poppins;
+      
       font-style: normal;
       font-weight: 500;
       font-size: 17px;
@@ -127,7 +129,7 @@ export default {
     flex-direction: column;
   }
   .text-second{
-      font-family: Poppins;
+      
       font-style: normal;
       font-weight: normal;
       font-size: 15px;
@@ -141,12 +143,12 @@ export default {
 .futer{
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  padding: 0 85px;
+  max-width: 1200px;
+  margin: 0 -200px;
 
   p{
-    margin: 90px 0 15px 0;
-    font-family: Poppins;
+    margin-bottom: 15px;
+    
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -174,7 +176,6 @@ export default {
       a{
         margin: 0 47px;
         display: flex;
-        font-family: Poppins;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;

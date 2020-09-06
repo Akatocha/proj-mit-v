@@ -1,34 +1,32 @@
 <template>
   <div>
-    <div class="calendar-box">
-      <center>
-        <h4> Сегодня: {{actualDate}} </h4>
-        <h3>Выбрано: <b v-if="CURR">{{fixCURR}} {{months[currMonth]}}</b></h3>
-        <br>
-      </center>
-      <div id="calendar">
-        <div class="head">
-          <b class="ltMonth" @click="ltMonth()">«</b>
-          <b>{{months[currMonth]}} {{currYear}} </b>
-          <b class="gtMonth" @click="gtMonth()">»</b>
-        </div>
-        <div class="week">
-          <b v-for="day in days"  >{{day}}</b>
-        </div>
-        <div class="days"><span v-for="blank in nullWeek" >&nbsp;
-          </span>
-          <time 
-          :class="{currDay: i == currDay, CURR: i == CURR}" 
-          @click="CURR = i"
-          v-for="i in daysInMonth" >{{i}} </time>
+    <div class="content">
+      <h1>When do you need to your vehicle to be shipped?</h1>
+      <div class="calendar-box">
+          <h4> Сегодня: {{actualDate}} </h4>
+          <h3>Выбрано: <b v-if="CURR">{{fixCURR}} {{months[currMonth]}}</b></h3>
+          <br>
+        <div id="calendar">
+          <div class="head">
+            <b class="ltMonth" @click="ltMonth()">«</b>
+            <b>{{months[currMonth]}} {{currYear}} </b>
+            <b class="gtMonth" @click="gtMonth()">»</b>
+          </div>
+          <div class="week">
+            <b v-for="day in days"  >{{day}}</b>
+          </div>
+          <div class="days"><span v-for="blank in nullWeek" >&nbsp;
+            </span>
+            <time
+            :class="{currDay: i == currDay, CURR: i == CURR}"
+            @click="CURR = i"
+            v-for="i in daysInMonth" >{{i}} </time>
+          </div>
         </div>
       </div>
-    </div>
 
-      <router-link tag="span" class="btn" to="/step3">
-        <span>Get next</span>
-        <img src="@/assets/arow.svg" alt="arow">
-      </router-link>
+        <router-link tag="span" class="btn" to="/step3">Next step</router-link>
+    </div>
   </div>
 </template>
 

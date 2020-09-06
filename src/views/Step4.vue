@@ -1,8 +1,11 @@
 <template>
   <div>
-    step 4
+    <div class="content">
+      <h1>We`ve found great rates for you!</h1>
+      <p class="desc">You`re one click away from viewing your matches.</p>
 
-    <a class="btn" href="#">Go to my profile</a>
+      <router-link tag="span" class="btn without-arrow" to="/end">Get My Car Shipping Quotes</router-link>
+    </div>
   </div>
 </template>
 
