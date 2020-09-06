@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>What car you shipping?</h1>
-    <div class="input-box">
+    <div v-for="repeat in counterArrInput" :key="repeat"
+    class="input-box">
       <select v-model="year" class="inp-text">
         <option 
         v-for="(year, key) in modelData" 
@@ -20,6 +21,20 @@
         :key="make"
         :value="make">{{make}}</option>
       </select>
+      <div class="checkbox-box">
+        <div class="checkbox-container">
+          <input type="checkbox">
+          <span>Inoperable</span>
+        </div>
+        <div class="checkbox-container">
+          <input type="checkbox">
+          <span>Modified</span>
+        </div>
+        <div class="checkbox-container" v-if="btnShow(repeat)">
+          <button @click="addcounterArrInput" >+</button>
+          <span>Add another vehicle</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +43,7 @@
   export default {
     data() {
       return {
+        counterArrInput: [1,2],
         year: 'Year',
         make: 'Make',
         model: 'Model',
@@ -64,10 +80,34 @@
 
       }
     },
+    methods: {
+      addcounterArrInput(){
+        let n = this.counterArrInput.length +1
+        this.counterArrInput.push(n)
+      },
+      btnShow(repeat) {
+        let n = this.counterArrInput.length 
+        if (repeat == n){
+          return true
+        }else{
+          return false
+        }
+      }
+    },
   }
 </script>
 
 <style lang="scss" scoped>
+.checkbox-box{
+  display: flex;
+  width: 100%;
+}
+
+.checkbox-container{
+  display: flex;
+  margin: auto;
+}
+
 .inp-text{
   padding: 15px 22px;
   height: 53px;
