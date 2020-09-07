@@ -46,7 +46,7 @@
   export default {
     data() {
       return {
-        counterArrInput: [1,2],
+        counterArrInput: [1],
         year: 'Year',
         make: 'Make',
         model: 'Model',
@@ -81,6 +81,15 @@
           }
         }
 
+      }
+    },
+    computed: {
+      yearsArr() {
+        let years = []
+        for (let i = 1917; i < 2021; i++){
+          years,push(i)
+        }
+        return this.years 
       }
     },
     methods: {
