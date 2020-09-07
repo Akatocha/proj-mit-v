@@ -25,7 +25,7 @@
         </div>
       </div>
 
-        <router-link tag="span" class="btn" to="/step3">Next step</router-link>
+      <router-link tag="span" class="btn" to="/step4">Next step</router-link>
     </div>
   </div>
 </template>
@@ -184,32 +184,4 @@ time:hover{
   background: rgba(238, 238, 238, 0.2);
   color: #f00;
 }
-
-  //  кнопка меню
-.btn{
-      height: 53px;
-      width: 270px;
-      background: #5FB763;
-      box-shadow: 0px 2.77551px 15px #B1EFB4;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      span{
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        color: #FFFFFF;
-      }
-
-      img{
-        color: #FFFFFF;
-        height: 12px;
-        margin-left: 8px;
-      }
-    }
 </style>

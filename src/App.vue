@@ -117,7 +117,11 @@ body{
       color: #393939;
       cursor: pointer;
       outline: none;
-      i{
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      user-select: none;
+
+        i{
         font-size: 21px;
         font-style: initial;
         margin-right: 6px;
@@ -221,7 +225,6 @@ body{
     content: '>';
     font-style: initial;
     font-size: 24px;
-    line-height: 1;
     margin-left: 9px;
   }
 
@@ -244,4 +247,9 @@ body{
   }
 }
 
+@media screen and (max-width: 1460px) {
+  #main-header {
+    padding-bottom: 20px;
+  }
+}
 </style>
