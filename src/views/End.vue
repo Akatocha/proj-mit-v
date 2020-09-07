@@ -37,4 +37,15 @@
   .btn{
     margin-top: 55px;
   }
+
+  @media screen and (max-width: 1460px) {
+
+    .wrap-success h1{
+      margin: 0;
+    }
+
+    .btn{
+      margin-top: 25px;
+    }
+  }
 </style>
