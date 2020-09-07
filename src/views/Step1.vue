@@ -5,12 +5,13 @@
       <div v-for="repeat in counterArrInput" :key="repeat"
       class="input-box">
         <select v-model="year" class="inp-text">
+          <option disabled value="start">Year</option>
           <option
-          v-for="(year, key) in modelData"
+          v-for="(year, key) in yearsArr"
           :key="key"
-          :value="key">{{key}} </option>
+          :value="year">{{year}} </option>
         </select>
-        <select v-model="make" class="inp-text">
+        <!-- <select v-model="make" class="inp-text">
           <option
           v-for="(make, key) in modelData[year]"
           :key="key"
@@ -21,7 +22,7 @@
           v-for="make in modelData[year][make]"
           :key="make"
           :value="make">{{make}}</option>
-        </select>
+        </select> -->
         <div class="checkbox-box">
           <div class="checkbox-container">
             <input type="checkbox">
@@ -43,53 +44,29 @@
 </template>
 
 <script>
+
   export default {
     data() {
       return {
         counterArrInput: [1],
-        year: 'Year',
+        year: 'start',
         make: 'Make',
         model: 'Model',
-        modelData: {
-          'Year': {
-            'Make':{
-              'Model': 'Model'
-            }
-          },
-          '1862': {
-            'Toyota': {
-              'toyota_1': 'toyota_1', 
-              'toyota_2': 'toyota_2', 
-              'toyota_3': 'toyota_3', 
-              'toyota_4': 'toyota_4', 
-            },
-            'Bmv': {
-              'bmv_1': 'bmv_1', 
-              'bmv_2': 'bmv_2', 
-              'bmv_3': 'bmv_3', 
-              'bmv_4': 'bmv_4', 
-            },
 
-          },
-          '1922':{
-            'Mers': {
-              'mers_1': 'mers_1', 
-              'mers_2': 'mers_2', 
-              'mers_3': 'mers_3', 
-              'mers_4': 'mers_4', 
-            },
-          }
-        }
 
       }
     },
     computed: {
       yearsArr() {
         let years = []
-        for (let i = 1917; i < 2021; i++){
-          years,push(i)
+        for (let i = 1917; i <= 2021; i++){
+          if(i == 1943){
+            i = 1945
+          }
+          years.push(i)
         }
-        return this.years 
+
+        return years
       }
     },
     methods: {
