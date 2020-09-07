@@ -4,25 +4,32 @@
       <h1>What car you shipping?</h1>
       <div v-for="repeat in counterArrInput" :key="repeat"
       class="input-box">
-        <select v-model="year" class="inp-text">
+        <select @change="selectYear" v-model="year" class="inp-text">
           <option disabled value="start">Year</option>
           <option
           v-for="(year, key) in yearsArr"
           :key="key"
           :value="year">{{year}} </option>
         </select>
-        <!-- <select v-model="make" class="inp-text">
+
+        <select @change="selectMake" v-model="makeId" class="inp-text">
+          <option disabled value="start">Make</option>
           <option
-          v-for="(make, key) in modelData[year]"
+          v-if="responseMake"
+          v-for="(make, key) in responseMake"
           :key="key"
-          :value="key">{{key}} </option>
+          :value="make.id">{{make.value}} </option>
         </select>
-        <select v-model="model" class="inp-text">
+
+        <select @change="selectModel" v-model="modelId" class="inp-text">
+          <option disabled value="start">Model</option>
           <option
-          v-for="make in modelData[year][make]"
-          :key="make"
-          :value="make">{{make}}</option>
-        </select> -->
+          v-if="responseModel"
+          v-for="(model, key) in responseModel"
+          :key="key"
+          :value="model.id">{{model.value}} </option>
+        </select>
+
         <div class="checkbox-box">
           <div class="checkbox-container">
             <input type="checkbox">
@@ -50,10 +57,10 @@
       return {
         counterArrInput: [1],
         year: 'start',
-        make: 'Make',
-        model: 'Model',
-
-
+        makeId: 'start',
+        modelId: 'start',
+        responseMake: null,
+        responseModel: null,
       }
     },
     computed: {
@@ -70,6 +77,25 @@
       }
     },
     methods: {
+      selectModel(){
+        console.log(this.modelId)
+      },
+      selectMake(){
+        let idMake = this.makeId
+        this.axios.get(`https://quotebooster.com/api/model/by_make_id.json?make_id=${idMake}`)
+        .then((response) => {
+          // console.log(response.data)
+          this.responseModel = response.data
+        }).catch(err => console.log(err))
+      },
+      selectYear(){
+        let year = this.year
+        this.axios.get(`https://quotebooster.com/api/make/by_year.json?year=${year}`)
+        .then((response) => {
+          // console.log(response.data)
+          this.responseMake = response.data
+        }).catch(err => console.log(err))
+      },
       addcounterArrInput(){
         let n = this.counterArrInput.length +1
         this.counterArrInput.push(n)
