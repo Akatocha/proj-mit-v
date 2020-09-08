@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="main-header">
-      <a href="/"><img class="logo" src="@/assets/logo_main.png" alt="QuoteBooster"></a>
+      <img class="logo" src="@/assets/logo_main.png" alt="QuoteBooster">
       <span class="phone-number">904 - 297 -1778</span>
     </div>
     <div class="main-box">
