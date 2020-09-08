@@ -36,8 +36,11 @@
         <span>Modified</span>
       </div>
       <div class="checkbox-container" >
-        <button @click="addInput" >+</button>
-        <span>Add another vehicle</span>
+        <button 
+        v-if="showButton"
+        :disabled='!buttonEnabled'
+        @click="addInput" >+++</button>
+        <span v-if="showButton">Add another vehicle</span>
       </div>
     </div>
   </div>
@@ -52,6 +55,8 @@
         modelId: 'start',
         responseMake: null,
         responseModel: null,
+        buttonEnabled: false,
+        showButton: true,
       }
     },
     computed: {
@@ -68,6 +73,7 @@
     },
     methods: {
       selectModel(){
+        this.buttonEnabled = true
         // console.log(this.modelId)
         this.$emit('catchDataFromInput', this.modelId)
       },
@@ -89,6 +95,7 @@
       },
       addInput(){
         this.$emit('addInput')
+        this.showButton = false
       }
     },
   }
