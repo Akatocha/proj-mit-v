@@ -6,9 +6,8 @@
         <InputBox v-for="i in repeatCoutn" :key="i"
         @addInput="addInput"
         @catchDataFromInput='catchDataFromInput'></InputBox>
-
-    </div>
       <router-link tag="span" class="btn" to="/step2">Next step</router-link>
+    </div>
   </div>
 </template>
 
@@ -44,29 +43,14 @@ import InputBox from '../components/inputBox'
 </script>
 
 <style lang="scss" scoped>
-.checkbox-box{
-  display: flex;
-  width: 100%;
-}
+  .btn{
+    margin-top: 40px;
+  }
 
-.checkbox-container{
-  display: flex;
-  margin: auto;
-}
 
-.inp-text{
-  padding: 15px 22px;
-  height: 53px;
-  background: #F5F5F5;
-  border-radius: 5px;
-  width: 270px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 25px;
-  letter-spacing: 0.03em;
-  color: #717171;
-  border: none;
-}
+  @media screen and (max-width: 1460px) {
+    .btn{
+      margin-top: 60px;
+    }
+  }
 </style>
