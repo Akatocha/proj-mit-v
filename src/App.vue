@@ -12,7 +12,8 @@
           class="spanL"><i><</i> Previous Step</router-link>
         </div>
         <div v-if="checkRoutRight" class="right-step">
-          <span class="spanR">Step 1/4</span>
+          <span 
+          class="spanR">Step {{step}}/4</span>
         </div>
       </div>
         <router-view/>
@@ -33,6 +34,17 @@ export default {
     }
   },
   computed: {
+    step(){
+      if( this.$route.path == '/step1'){
+        return 1
+      }if( this.$route.path == '/step2'){
+        return 2
+      }if( this.$route.path == '/step3'){
+        return 3
+      }if( this.$route.path == '/step4'){
+        return 4
+      }
+    },
     checkRoutLeft() {
       if (this.$route.path !== '/'){
         return true
