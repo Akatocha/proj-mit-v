@@ -7,14 +7,14 @@
           <span class="title">Open Trailer</span>
           <span class="description">Cost less</span>
           <span class="description"> Vehicle is on open air</span>
-          <input type="radio" checked="checked" name="radio">
+          <input type="radio" checked="checked" name="traller" value="Open Trailer">
           <span class="checkmark"></span>
         </label>
         <label class="custom-checkbox">
           <span class="title">Enclosed Trailer</span>
           <span class="description">Cost more </span>
           <span class="description">Vehicle is protected from weather</span>
-          <input type="radio" name="radio">
+          <input type="radio" name="traller" value="Enclosed Trailer">
           <span class="checkmark"></span>
         </label>
       </div>

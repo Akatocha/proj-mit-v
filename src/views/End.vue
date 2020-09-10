@@ -9,7 +9,7 @@
           to you the email address you indicated<br>
           <a class="mail-link" href="mailto:mail_user@gmail.com">mail_user@gmail.com</a>
         </p>
-        <a class="btn without-arrow" href="#">Go to my profile</a>
+        <router-link tag="span" class="btn without-arrow" to="/">Create another application</router-link>
       </div>
     </div>
   </div>

@@ -43,6 +43,9 @@ import InputBox from '../components/inputBox'
 </script>
 
 <style lang="scss" scoped>
+
+
+
   .btn{
     margin-top: 40px;
   }

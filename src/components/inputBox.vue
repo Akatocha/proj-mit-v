@@ -1,53 +1,60 @@
 <template>
   <div>
-    <select @change="selectYear" v-model="year" class="inp-text">
-      <option disabled value="start">Year</option>
-      <option
-      v-for="(year, key) in yearsArr"
-      :key="key"
-      :value="year">{{year}} </option>
-    </select>
+      <div class="wrap-input-group">
+          <div class="input-group">
+            <select @change="selectYear" v-model="year" class="inp-text">
+              <option disabled value="start">Year</option>
+              <option
+              v-for="(year, key) in yearsArr"
+              :key="key"
+              :value="year">{{year}} </option>
+            </select>
 
-    <select @change="selectMake" v-model="makeId" class="inp-text">
-      <option disabled value="start">Make</option>
-      <option
-      v-if="responseMake"
-      v-for="(make, key) in responseMake"
-      :key="key"
-      :value="make.id">{{make.value}} </option>
-    </select>
+              <label class="checkbox-container">
+                  <input type="checkbox">
+                  <span class="checkbox-custom"></span>
+                  <span class="label">Inoperable</span>
+                  <span class="bottom-desc">Doesn`t Run</span>
+              </label>
+          </div>
+          <div class="input-group">
+            <select @change="selectMake" v-model="makeId" class="inp-text">
+              <option disabled value="start">Make</option>
+              <option
+              v-if="responseMake"
+              v-for="(make, key) in responseMake"
+              :key="key"
+              :value="make.id">{{make.value}} </option>
+            </select>
+              <label class="checkbox-container">
+                  <input type="checkbox">
+                  <span class="checkbox-custom"></span>
+                  <span class="label">Modified</span>
+                  <span class="bottom-desc">Lift kits, large tires, extra weight, ets.</span>
+              </label>
+          </div>
+          <div class="input-group">
+            <select @change="selectModel" v-model="modelId" class="inp-text">
+              <option disabled value="start">Model</option>
+              <option
+              v-if="responseModel"
+              v-for="(model, key) in responseModel"
+              :key="key"
+              :value="model.id">{{model.value}} </option>
+            </select>
 
-    <select @change="selectModel" v-model="modelId" class="inp-text">
-      <option disabled value="start">Model</option>
-      <option
-      v-if="responseModel"
-      v-for="(model, key) in responseModel"
-      :key="key"
-      :value="model.id">{{model.value}} </option>
-    </select>
+              <div class="checkbox-container add-button-container">
+                <button
+                v-if="showButton"
+                :disabled='!buttonEnabled'
+                @click="addInput" >Add another vehicle</button>
 
-    <div class="checkbox-box">
-      <label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkbox-custom"></span>
-        <span class="label">Inoperable</span>
-        <span class="bottom-desc">Doesn`t Run</span>
-      </label>
-      <label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkbox-custom"></span>
-        <span class="label">Modified</span>
-        <span class="bottom-desc">Lift kits, large tires, extra weight, ets.</span>
-      </label>
-      <div class="checkbox-container add-button-container">
-        <button 
-        v-if="showButton"
-        :disabled='!buttonEnabled'
-        @click="addInput" >+</button>
-        <span v-if="showButton">Add another vehicle</span>
+              </div>
+          </div>
+          <span class="button-delete"></span>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -106,19 +113,59 @@
 </script>
 
 <style lang="scss" scoped>
-  .checkbox-box{
-    display: flex;
-      width: 100%;
-      margin-top: 20px;
-  }
 
+    .wrap-input-group{
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .input-group{
+            width: 285px;
+            padding: 10px;
+        }
+
+        .button-delete {
+            position: absolute;
+            right: -40px;
+            top: 20px;
+            width: 32px;
+            height: 32px;
+            opacity: 0.5;
+            cursor: pointer;
+
+            &:first-child{
+                display: none;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+            &:before, &:after {
+                position: absolute;
+                left: 15px;
+                content: ' ';
+                height: 33px;
+                width: 2px;
+                background-color: #5FB763;
+            }
+            &:before {
+                transform: rotate(45deg);
+            }
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    .content > div:nth-child(2) .button-delete{
+        display: none;
+    }
 
   .checkbox-container{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     cursor: pointer;
-    width: 270px;
+    width: 100%;
     margin: 0 10px;
 
     input[type="checkbox"]{
@@ -179,15 +226,13 @@
 
   }
 
-
-
   .inp-text{
     padding: 15px 20px;
     height: 50px;
     background: #F5F5F5;
     border-radius: 5px;
-    width: 270px;
-    margin: 0 10px;
+    width: 100%;
+    margin-bottom: 10px;
     font-family: Poppins;
     font-size: 16px;
     line-height: 25px;
@@ -195,38 +240,45 @@
     color: #393939;
     font-weight: 500;
     border: none;
-  }
-  .inp-text option{
-    font-size: 16px;
-    line-height: 25px;
-    letter-spacing: 0.03em;
-    color: #393939;
-  }
+    option {
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.03em;
+        color: #393939;
+    }
 
-  .inp-text::placeholder{
-    color: red;
-  }
-
-  .inp-text option:disabled,
-  .inp-text::placeholder{
-    color: #B9B9B9;
-  }
+    option:disabled,
+    ::placeholder {
+           color: #B9B9B9;
+       }
+   }
 
   .add-button-container {
     align-items: baseline;
 
-    button {
-      width: 22px;
-      height: 22px;
-      font-size: 18px;
-      color: #fff;
-      background: #5FB763;
-      border-radius: 2px;
-      border: none;
-    }
-    span {
-      color: #5FB763;
-      margin-left: 8px;
+    button{
+        display: flex;
+        align-items: center;
+        border: none;
+        background: none;
+        color: #5FB763;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:before {
+            content: '+';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 22px;
+            height: 22px;
+            font-size: 18px;
+            color: #fff;
+            background: #5FB763;
+            border-radius: 2px;
+            margin-right: 8px;
+        }
     }
 
     [disabled="disabled"] {
