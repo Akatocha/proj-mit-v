@@ -8,12 +8,46 @@
         <div class="buton-box">
           <div class="gray-text-box-1">
           <span class="gray-text">PICKUP FROM</span>
-            <input class="zip-text" placeholder="Enter ZIP Code or City" type="text">
+            <input 
+              @keydown="getZipOne"
+              class="zip-text" 
+              v-model="zipCityOne" 
+              placeholder="Enter ZIP Code or City" 
+              type="text">
+            <div 
+              v-if="showDropdownOne"
+              class="dropdown-content">
+              <div 
+                @click="takeZipOne(region)"
+                v-for="region in responseDataOne"
+                :key='region.zip'
+                class="dd-cell">
+                <span>{{region.city}} </span>
+                <span>{{region.state}}</span>
+              </div>
+            </div>
           </div>
-          <div class="gray-text-box-2">
+          <div class="gray-text-box-1 gray-text-box-2">
             <hr>
             <span class="gray-text">DELIVERY TO</span>
-            <span class="number-tex">80124</span>
+            <input 
+              @keydown="getZipTwo"
+              class="zip-text" 
+              v-model="zipCityTwo" 
+              placeholder="Enter ZIP Code or City" 
+              type="text">
+            <div 
+              v-if="showDropdownTwo"
+              class="dropdown-content">
+              <div 
+                @click="takeZipTwo(region)"
+                v-for="region in responseDataTwo"
+                :key='region.zip'
+                class="dd-cell">
+                <span>{{region.city}} </span>
+                <span>{{region.state}}</span>
+              </div>
+            </div>
           </div>
           <router-link tag="span" class="btn" to="/step1">
             Get started
@@ -41,8 +75,51 @@
 export default {
   data() {
     return {
-      zipCity: 'start',
-      zipCityArr: ['ua', 'dsa', 'udcx']
+      zipCityOne: '',
+      zipCityTwo: '',
+      zipCityArr: ['ua', 'dsa', 'udcx'],
+      responseDataOne: null,
+      responseDataTwo: null,
+    }
+  },
+  computed: {
+    showDropdownOne() {
+      if(this.zipCityOne !== '' && this.responseDataOne !== null){
+        return true
+      }else{
+        return false
+      }
+    },
+    showDropdownTwo() {
+      if(this.zipCityTwo !== '' && this.responseDataTwo !== null){
+        return true
+      }else{
+        return false
+      }
+    }
+  },
+  methods: {
+    getZipOne() {
+      // console.log('zip')
+      this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityOne}`)
+      .then(res => {
+        this.responseDataOne = res.data.data
+      }).catch(err => console.log(err))
+    },
+    getZipTwo() {
+      // console.log('zip')
+      this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityTwo}`)
+      .then(res => {
+        this.responseDataTwo = res.data.data
+      }).catch(err => console.log(err))
+    },
+    takeZipOne(region){
+      this.zipCityOne =  `${region.city}, ${region.state}`
+      this.responseDataOne = null
+    },
+    takeZipTwo(region){
+      this.zipCityTwo = `${region.city}, ${region.state}`
+      this.responseDataTwo = null
     }
   },
 }
@@ -68,6 +145,27 @@ export default {
       width: 274px;
       display: flex;
       flex-direction: column;
+      position: relative;
+
+      .dropdown-content{
+        z-index: 2;
+        width: 304px;
+        background: white;
+        top: 100%;
+        position: absolute;
+        height: 300px;
+        overflow: scroll;
+        .dd-cell{
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          padding: 5px;
+          &:hover{
+            background: rgb(204, 204, 204);
+
+          }
+        }
+      }
     }
 
     .gray-text-box-2{
