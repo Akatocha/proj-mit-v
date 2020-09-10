@@ -7,51 +7,54 @@
         <div class="supra-button-box">
         <div class="buton-box">
           <div class="gray-text-box-1">
-            <span class="gray-text">PICKUP FROM</span>
-              <input
-                @keydown="getZipOne"
-                class="zip-text"
-                v-model="zipCityOne"
-                placeholder="Enter ZIP Code or City"
-                type="text">
-              <div
-                v-if="showDropdownOne"
-                class="dropdown-content">
-                <div
-                  @click="takeZipOne(region)"
-                  v-for="region in responseDataOne"
-                  :key='region.zip'
-                  class="dd-cell">
-                  <span>{{region.city}} </span>
-                  <span>{{region.state}}</span>
-                </div>
+          <span class="gray-text">PICKUP FROM</span>
+            <input 
+              @keyup="getZipOne"
+              class="zip-text" 
+              v-model="zipCityOne" 
+              placeholder="Enter ZIP Code or City" 
+              type="text">
+            <div 
+              v-if="showDropdownOne"
+              class="dropdown-content">
+              <div 
+                @click="takeZipOne(region)"
+                v-for="region in responseDataOne"
+                :key='region.zip'
+                class="dd-cell">
+                <span>{{region.city}} </span>
+                <span>{{region.state}}</span>
               </div>
             </div>
-            <div class="gray-text-box-1 gray-text-box-2">
-              <hr>
-              <span class="gray-text">DELIVERY TO</span>
-              <input
-                @keydown="getZipTwo"
-                class="zip-text"
-                v-model="zipCityTwo"
-                placeholder="Enter ZIP Code or City"
-                type="text">
-              <div
-                v-if="showDropdownTwo"
-                class="dropdown-content">
-                <div
-                  @click="takeZipTwo(region)"
-                  v-for="region in responseDataTwo"
-                  :key='region.zip'
-                  class="dd-cell">
-                  <span>{{region.city}} </span>
-                  <span>{{region.state}}</span>
-                </div>
-              </div>
-            </div>
-            <router-link tag="span" class="btn" to="/step1">Get started</router-link>
           </div>
-          <p class="text-second">It will only take 30 seconds</p>
+          <div class="gray-text-box-1 gray-text-box-2">
+            <hr>
+            <span class="gray-text">DELIVERY TO</span>
+            <input 
+              @keyup="getZipTwo"
+              class="zip-text" 
+              v-model="zipCityTwo" 
+              placeholder="Enter ZIP Code or City" 
+              type="text">
+            <div 
+              v-if="showDropdownTwo"
+              class="dropdown-content">
+              <div 
+                @click="takeZipTwo(region)"
+                v-for="region in responseDataTwo"
+                :key='region.zip'
+                class="dd-cell">
+                <span>{{region.city}} </span>
+                <span>{{region.state}}</span>
+              </div>
+            </div>
+          </div>
+          <router-link tag="span" class="btn" to="/step1">
+            Get started
+          </router-link>
+
+        </div>
+        <p class="text-second">It will only take 30 seconds</p>
         </div>
       </div>
       <div class="futer">
@@ -81,14 +84,14 @@ export default {
   },
   computed: {
     showDropdownOne() {
-      if(this.zipCityOne !== '' && this.responseDataOne !== null){
+      if(this.zipCityOne.length > 2  && this.responseDataOne !== null){
         return true
       }else{
         return false
       }
     },
     showDropdownTwo() {
-      if(this.zipCityTwo !== '' && this.responseDataTwo !== null){
+      if(this.zipCityTwo.length > 2  && this.responseDataTwo !== null){
         return true
       }else{
         return false
@@ -97,18 +100,20 @@ export default {
   },
   methods: {
     getZipOne() {
-      // console.log('zip')
-      this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityOne}`)
-      .then(res => {
-        this.responseDataOne = res.data.data
-      }).catch(err => console.log(err))
+      if (this.zipCityOne.length > 2){
+        this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityOne}`)
+        .then(res => {
+          this.responseDataOne = res.data.data
+        }).catch(err => console.log(err))
+      }
     },
     getZipTwo() {
-      // console.log('zip')
-      this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityTwo}`)
-      .then(res => {
-        this.responseDataTwo = res.data.data
-      }).catch(err => console.log(err))
+      if (this.zipCityTwo.length > 2){
+        this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityTwo}`)
+        .then(res => {
+          this.responseDataTwo = res.data.data
+        }).catch(err => console.log(err))
+      }
     },
     takeZipOne(region){
       this.zipCityOne =  `${region.city}, ${region.state}`
