@@ -7,54 +7,51 @@
         <div class="supra-button-box">
         <div class="buton-box">
           <div class="gray-text-box-1">
-          <span class="gray-text">PICKUP FROM</span>
-            <input 
-              @keydown="getZipOne"
-              class="zip-text" 
-              v-model="zipCityOne" 
-              placeholder="Enter ZIP Code or City" 
-              type="text">
-            <div 
-              v-if="showDropdownOne"
-              class="dropdown-content">
-              <div 
-                @click="takeZipOne(region)"
-                v-for="region in responseDataOne"
-                :key='region.zip'
-                class="dd-cell">
-                <span>{{region.city}} </span>
-                <span>{{region.state}}</span>
+            <span class="gray-text">PICKUP FROM</span>
+              <input
+                @keydown="getZipOne"
+                class="zip-text"
+                v-model="zipCityOne"
+                placeholder="Enter ZIP Code or City"
+                type="text">
+              <div
+                v-if="showDropdownOne"
+                class="dropdown-content">
+                <div
+                  @click="takeZipOne(region)"
+                  v-for="region in responseDataOne"
+                  :key='region.zip'
+                  class="dd-cell">
+                  <span>{{region.city}} </span>
+                  <span>{{region.state}}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gray-text-box-1 gray-text-box-2">
-            <hr>
-            <span class="gray-text">DELIVERY TO</span>
-            <input 
-              @keydown="getZipTwo"
-              class="zip-text" 
-              v-model="zipCityTwo" 
-              placeholder="Enter ZIP Code or City" 
-              type="text">
-            <div 
-              v-if="showDropdownTwo"
-              class="dropdown-content">
-              <div 
-                @click="takeZipTwo(region)"
-                v-for="region in responseDataTwo"
-                :key='region.zip'
-                class="dd-cell">
-                <span>{{region.city}} </span>
-                <span>{{region.state}}</span>
+            <div class="gray-text-box-1 gray-text-box-2">
+              <hr>
+              <span class="gray-text">DELIVERY TO</span>
+              <input
+                @keydown="getZipTwo"
+                class="zip-text"
+                v-model="zipCityTwo"
+                placeholder="Enter ZIP Code or City"
+                type="text">
+              <div
+                v-if="showDropdownTwo"
+                class="dropdown-content">
+                <div
+                  @click="takeZipTwo(region)"
+                  v-for="region in responseDataTwo"
+                  :key='region.zip'
+                  class="dd-cell">
+                  <span>{{region.city}} </span>
+                  <span>{{region.state}}</span>
+                </div>
               </div>
             </div>
+            <router-link tag="span" class="btn" to="/step1">Get started</router-link>
           </div>
-          <router-link tag="span" class="btn" to="/step1">
-            Get started
-          </router-link>
-
-        </div>
-        <p class="text-second">It will only take 30 seconds</p>
+          <p class="text-second">It will only take 30 seconds</p>
         </div>
       </div>
       <div class="futer">

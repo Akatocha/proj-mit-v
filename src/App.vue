@@ -2,7 +2,17 @@
   <div>
     <div id="main-header">
       <img class="logo" src="@/assets/logo_main.png" alt="QuoteBooster">
-      <span class="phone-number">904 - 297 -1778</span>
+      <span class="hide-mobile phone-number">904 - 297 -1778</span>
+      <div id="wrap-menu-mobile">
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
     <div class="main-box">
       <div class="step-box">
@@ -74,9 +84,13 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-    :focus{
-      outline: none;
-    }
+:focus{
+  outline: none;
+}
+::selection {
+  color: #fff;
+  background: #B1EFB4;
+}
 body{
   font-family: Poppins;
   color: #393939;
@@ -161,6 +175,8 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 20px 100px 85px 100px;
+
+
   .logo{
     width: 155px;
   }
@@ -181,7 +197,10 @@ body{
       transform: rotate(-6.14deg);
     }
   }
+}
 
+#wrap-menu-mobile{
+  display: none;
 }
 
 #main-footer{
@@ -253,5 +272,102 @@ body{
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .hide-mobile {
+    display: none !important;
+  }
 
+  #main-header {
+    padding: 30px;
+    justify-content: center;
+  }
+
+
+  #wrap-menu-mobile{
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 30px;
+
+    .menu-icon {
+      cursor: pointer;
+      display: inline-block;
+      float: right;
+      padding: 28px 20px;
+      position: relative;
+      user-select: none;
+    }
+
+    .menu-icon .navicon {
+      background: #393939;
+      display: block;
+      height: 2px;
+      position: relative;
+      transition: background .2s ease-out;
+      width: 18px;
+    }
+
+    .menu-icon .navicon:before,
+    .menu-icon .navicon:after {
+      background: #393939;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all .2s ease-out;
+      width: 100%;
+    }
+
+    .menu-icon {
+      .navicon:before {
+        top: 5px;
+      }
+      .navicon:after {
+        top: -5px;
+      }
+    }
+
+    .menu{
+
+    }
+    .menu-btn {
+      display: none;
+    }
+
+    .menu-btn:checked ~ .menu {
+      max-height: 240px;
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon {
+      background: transparent;
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon:before {
+      transform: rotate(-45deg);
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon:after {
+      transform: rotate(45deg);
+    }
+
+    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+      top: 0;
+    }
+  }
+
+  .main-box{
+    height: auto;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h1{
+      font-size: 20px;
+      line-height: 30px;
+      margin-top: 25px;
+      text-align: center;
+    }
+  }
+}
 </style>

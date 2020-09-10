@@ -188,8 +188,7 @@ const NOW = new Date();
    .gtMonth:hover {
      transform: scale(2) rotate(-180deg);
    }
-  }
-
+ }
 
 
  .btn{
@@ -205,4 +204,33 @@ const NOW = new Date();
      margin-top: 40px;
    }
  }
+
+ @media screen and (max-width: 1000px) {
+   .calendar-box{
+     width: 220px;
+
+     .selected-date{
+       font-size: 12px;
+     }
+
+     .week {
+       padding: 0 5px;
+       b {
+         width: 34px;
+       }
+     }
+
+     span, time{
+       width: 34px;
+       margin: 1px;
+      font-size: 12px;
+     }
+
+     .days{
+       line-height: 34px;
+       padding: 5px 0;
+     }
+   }
+ }
+
 </style>

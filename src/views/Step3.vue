@@ -125,4 +125,10 @@
     }
   }
 
+  @media screen and (max-width: 1000px) {
+    .wrap-radio{
+      flex-direction: column;
+    }
+  }
+
 </style>

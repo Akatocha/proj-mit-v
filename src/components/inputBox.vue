@@ -283,11 +283,9 @@
 
     [disabled="disabled"] {
       opacity: 0.5;
+      cursor: default;
     }
 
-    [disabled="disabled"] + span {
-      opacity: 0.5;
-    }
   }
 
 
