@@ -38,6 +38,7 @@
     margin-top: 55px;
   }
 
+
   @media screen and (max-width: 1460px) {
 
     .wrap-success h1{
@@ -48,4 +49,23 @@
       margin-top: 25px;
     }
   }
+  @media screen and (max-width: 1000px) {
+    .wrap-success{
+      img{
+        width: 65px;
+      }
+
+      h1{
+        margin-top: 10px;
+      }
+
+    }
+
+    .desc{
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
 </style>

@@ -24,6 +24,7 @@
   #info-form{
     width: 270px;
     margin-top: 35px;
+
   }
 
   #info-form input{
@@ -43,17 +44,16 @@
     color: #B9B9B9;
   }
 
-  .btn{
-    margin-top: 40px;
-  }
 
-
-  @media screen and (max-width: 1460px) {
-    .wrap-radio{
-      margin-top: 20px;
-    }
-    .btn{
-      margin-top: 60px;
+  @media screen and (max-width: 1000px) {
+    #info-form
+    {
+      width: 220px;
+      margin-top: 25px;
+      input{
+      font-size: 14px;
+      }
     }
   }
+
 </style>

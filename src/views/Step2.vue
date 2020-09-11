@@ -84,7 +84,7 @@ const NOW = new Date();
 <style lang="scss" scoped>
  .calendar-box {
     width: 320px;
-    margin: auto;
+    margin: 35px auto 0;
 
     [v-cloak] {
       display: none;
@@ -112,7 +112,7 @@ const NOW = new Date();
       position: relative;
       line-height: 2em;
       padding: 0 10px;
-      :after{
+      &:after{
         content: '';
         display: block;
         position: absolute;
@@ -134,7 +134,7 @@ const NOW = new Date();
     }
     .days {
       flex-wrap: wrap;
-      line-height: 40px;
+      line-height: 38px;
       padding: 10px 5px;
     }
     span,
@@ -188,21 +188,44 @@ const NOW = new Date();
    .gtMonth:hover {
      transform: scale(2) rotate(-180deg);
    }
-  }
-
-
-
- .btn{
-   margin-top: 60px;
  }
+
 
 
  @media screen and (max-width: 1460px) {
    .wrap-radio{
      margin-top: 20px;
    }
-   .btn{
-     margin-top: 40px;
+ }
+
+ @media screen and (max-width: 1000px) {
+
+   .calendar-box{
+     width: 220px;
+
+     .selected-date{
+       font-size: 12px;
+     }
+
+     .week {
+       padding: 0;
+       b {
+         width: 34px;
+         margin: 0;
+       }
+     }
+
+     span, time{
+       width: 29px;
+       margin: 1px;
+      font-size: 12px;
+     }
+
+     .days{
+       line-height: 27px;
+       padding: 5px 0;
+     }
    }
  }
+
 </style>
