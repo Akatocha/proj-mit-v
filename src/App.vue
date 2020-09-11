@@ -6,12 +6,10 @@
       <div id="wrap-menu-mobile">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-        <ul class="menu">
-          <li><a href="#work">Our Work</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#careers">Careers</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="menu">
+            <p>Get fast online quote from top-rated companies. Save up to 27% now!</p>
+            <span class="phone-number">904 - 297 -1778</span>
+        </div>
       </div>
     </div>
     <div class="main-box">
@@ -293,13 +291,35 @@ body{
     padding: 30px;
     justify-content: center;
   }
+  .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background-color: #fff;
+      margin-top: 50px;
+      max-height: 0;
+      transition: max-height .2s ease-out;
+      overflow: hidden;
+      box-shadow: 0 16px  2px -2px rgba(0, 0, 0, 0.05);
+
+      p{
+          text-align: center;
+          font-size: 14px;
+      }
+      .phone-number{
+          margin-top: 40px;
+      }
+  }
 
 
-  #wrap-menu-mobile{
+    #wrap-menu-mobile{
     position: absolute;
     display: block;
     right: 0;
     top: 30px;
+    width: 100%;
 
     .menu-icon {
       cursor: pointer;
@@ -348,6 +368,7 @@ body{
 
     .menu-btn:checked ~ .menu {
       max-height: 240px;
+      padding: 35px;
     }
 
     .menu-btn:checked ~ .menu-icon .navicon {
