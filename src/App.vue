@@ -54,7 +54,7 @@ export default {
       }
     },
     checkRoutLeft() {
-      if (this.$route.path !== '/'){
+      if (this.$route.path !== '/' && this.$route.path !== '/end'){
         return true
       }else{
         return false
