@@ -16,7 +16,7 @@
             </span>
             <time
             :class="{currDay: i == currDay, CURR: i == CURR}"
-            @click="CURR = i"
+            @click="selectDay(i)"
             v-for="i in daysInMonth" >{{i}} </time>
           </div>
         </div>
@@ -71,6 +71,11 @@ const NOW = new Date();
       }
     },
     methods: {
+      selectDay(i){
+        this.CURR = i
+        let x = `${i}.${this.currMonth+1}.${this.currYear}`
+        console.log(x)
+      },
       ltMonth() {
         this.inst_date = new Date(this.currYear, this.currMonth-1)
       },
