@@ -78,6 +78,9 @@ const NOW = new Date();
         this.inst_date = new Date(this.currYear, this.currMonth+1)
       }
     },
+    created () {
+      this.CURR = this.currDay;
+    },
   }
 </script>
 
