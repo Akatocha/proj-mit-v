@@ -30,7 +30,8 @@
               </div>
             </div>
           </div>
-          <div class="gray-text-box-1 gray-text-box-2">
+          <div @mouseleave="restartZip2"
+          class="gray-text-box-1 gray-text-box-2">
             <hr>
             <span class="gray-text">DELIVERY TO</span>
             <input 
@@ -52,9 +53,10 @@
               </div>
             </div>
           </div>
-          <router-link tag="span" class="btn" to="/step1">
+          <button @click="goToStep1"
+          :disabled='!checkNextStep'  class="btn" >
             Get started
-          </router-link>
+          </button>
 
         </div>
         <p class="text-second">It will only take 30 seconds</p>
@@ -79,14 +81,21 @@ export default {
   data() {
     return {
       z1pick: false,
+      z2pick: false,
       zipCityOne: '',
       zipCityTwo: '',
-      zipCityArr: ['ua', 'dsa', 'udcx'],
       responseDataOne: null,
       responseDataTwo: null,
     }
   },
   computed: {
+    checkNextStep(){
+      if(this.z1pick && this.z2pick){
+        return true
+      }else{
+        return false
+      }
+    },
     showDropdownOne() {
       if(this.zipCityOne.length > 2  && this.responseDataOne !== null){
         return true
@@ -101,16 +110,19 @@ export default {
         return false
       }
     },
-    z1check(){
-      if (this.z1pick){
-        return true
-      }else{return false}
-    }
   },
   methods: {
+    goToStep1(){
+      this.$router.push('/step1')
+    },
     restartZip1(){
       if(!this.z1pick){
       this.zipCityOne = ''
+      }
+    },
+    restartZip2(){
+      if(!this.z2pick){
+      this.zipCityTwo = ''
       }
     },
     getZipOne() {
@@ -130,13 +142,16 @@ export default {
       }
     },
     takeZipOne(region){
-      this.zipCityOne =  `${region.city}, ${region.state}`
+      this.zipCityOne =  `${region.city}, ${region.state}`     
+      localStorage.setItem('cityOne', JSON.stringify(region))
       this.z1pick = true
       this.responseDataOne = null
     },
     takeZipTwo(region){
       this.zipCityTwo = `${region.city}, ${region.state}`
+      localStorage.setItem('cityTwo', JSON.stringify(region))
       this.responseDataTwo = null
+      this.z2pick = true
     }
   },
 }
@@ -318,6 +333,8 @@ export default {
 }
 
 .btn{
+  border: none;
+  outline: none;
   margin-top: 0;
 }
 
