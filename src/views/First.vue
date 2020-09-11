@@ -6,9 +6,12 @@
         <h4>Save an average of 27% & make a fully informed decision</h4>
         <div class="supra-button-box">
         <div class="buton-box">
-          <div class="gray-text-box-1">
+          <div 
+          @mouseleave="restartZip1"
+          class="gray-text-box-1">
           <span class="gray-text">PICKUP FROM</span>
             <input 
+              
               @keyup="getZipOne"
               class="zip-text" 
               v-model="zipCityOne" 
@@ -75,6 +78,7 @@
 export default {
   data() {
     return {
+      z1pick: false,
       zipCityOne: '',
       zipCityTwo: '',
       zipCityArr: ['ua', 'dsa', 'udcx'],
@@ -96,9 +100,19 @@ export default {
       }else{
         return false
       }
+    },
+    z1check(){
+      if (this.z1pick){
+        return true
+      }else{return false}
     }
   },
   methods: {
+    restartZip1(){
+      if(!this.z1pick){
+      this.zipCityOne = ''
+      }
+    },
     getZipOne() {
       if (this.zipCityOne.length > 2){
         this.axios.get(`https://quotebooster.com/api/city/by_query.json?q=${this.zipCityOne}`)
@@ -117,6 +131,7 @@ export default {
     },
     takeZipOne(region){
       this.zipCityOne =  `${region.city}, ${region.state}`
+      this.z1pick = true
       this.responseDataOne = null
     },
     takeZipTwo(region){
