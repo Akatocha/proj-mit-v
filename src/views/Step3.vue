@@ -34,7 +34,7 @@
   .wrap-radio{
       display: flex;
       align-items: center;
-      margin-top: 40px;
+      margin-top: 35px;
   }
 
   .custom-checkbox{
@@ -45,7 +45,7 @@
     text-align: center;
     position: relative;
     width: 270px;
-    height: 187px;
+    height: 185px;
     margin: 10px;
     background: #FFFFFF;
     color: #393939;
@@ -111,17 +111,10 @@
     }
   }
 
-  .btn{
-    margin-top: 60px;
-  }
-
 
   @media screen and (max-width: 1460px) {
     .wrap-radio{
       margin-top: 20px;
-    }
-    .btn{
-      margin-top: 60px;
     }
   }
 
@@ -129,6 +122,17 @@
     .wrap-radio{
       flex-direction: column;
     }
+    .custom-checkbox{
+      width: 220px;
+      height: 155px;
+      .title{
+        font-size: 17px;
+      }
+      .description{
+        font-size: 13px;
+      }
+    }
   }
+
 
 </style>

@@ -63,7 +63,7 @@
           <img src="@/assets/logoBot_1.png" alt="logo">
           <img src="@/assets/logoBot_2.png" alt="logo">
           <img src="@/assets/logoBot_3.png" alt="logo">
-          <img class="img-4" src="@/assets/logoBot_4.png" alt="logo">
+          <img src="@/assets/logoBot_4.png" alt="logo" style="max-height: 61px;">
         </div>
 
       </div>
@@ -135,8 +135,7 @@ export default {
   align-items: center;
 
   .buton-box{
-    max-width: 850px;
-    padding: 31px;
+    padding: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -151,21 +150,39 @@ export default {
 
       .dropdown-content{
         z-index: 2;
-        width: 304px;
+        width: 270px;
         background: white;
         top: 100%;
         position: absolute;
-        height: 300px;
-        overflow: scroll;
+        max-height: 300px;
+        overflow: auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 10px 5px;
+
         .dd-cell{
           cursor: pointer;
           display: flex;
           justify-content: space-between;
           padding: 5px;
           &:hover{
-            background: rgb(204, 204, 204);
-
+            background: #5FB763;
+            color: #fff;
           }
+        }
+
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px #B1EFB4;
+          border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #5fb763ad;
+          border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: #5FB763;
         }
       }
     }
@@ -199,14 +216,16 @@ export default {
     }
 
     .zip-text{
-      
+      font-size: 17px;
       font-style: normal;
       font-weight: 600;
-      font-size: 17px;
       line-height: 25px;
       letter-spacing: 0.03em;
-      color: #717171;
       border: none;
+      color: #393939;
+    }
+    &::placeholder {
+      color: #717171;
     }
     :focus{
       outline: none;
@@ -243,8 +262,7 @@ export default {
 .futer{
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 -200px;
+  margin: 120px -200px 0 -200px;
 
   p{
     margin-bottom: 15px;
@@ -261,11 +279,8 @@ export default {
 
   .img-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    .img-4{
-      height: 61px;
-    }
   }
 
   .a-box{
@@ -284,6 +299,87 @@ export default {
         text-decoration-line: underline;
         color: #393939;
       }
+  }
+}
+
+.btn{
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1460px) {
+  .futer{
+    margin: 65px 0 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main-box h4{
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .first-main{
+    .supra-button-box{
+      width: 280px;
+    }
+
+    .buton-box{
+      padding: 0 30px 30px;
+
+      hr{
+        display: none;
+      }
+
+      .gray-text{
+        font-size: 12px;
+      }
+
+      .gray-text-box-1{
+        position: relative;
+        width: 100%;
+        padding: 30px 0;
+
+        .dropdown-content{
+          width: 100%;
+          margin-top: -30px;
+          max-height: 200px;
+          .dd-cell{
+            font-size: 15px;
+          }
+        }
+
+        &:first-child:after{
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          height: 1.5px;
+          width: 100%;
+          background-color:  #EDEDED;
+        }
+        .zip-text{
+          font-size: 12px;
+        }
+      }
+    }
+    .text-second{
+      text-align: center;
+      width: 100%;
+      font-size: 18px;
+    }
+
+  }
+
+  .futer{
+   .img-container{
+     justify-content: center;
+     flex-direction: column;
+     img{
+       margin: 15px 0;
+       max-width: 90%;
+       height: auto;
+     }
+   }
   }
 }
 </style>

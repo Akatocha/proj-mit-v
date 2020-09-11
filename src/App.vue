@@ -237,6 +237,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 60px;
   height: 53px;
   width: 270px;
   background: #5FB763;
@@ -277,16 +278,34 @@ body{
 }
 
 @media screen and (max-width: 1460px) {
+  .btn{
+    margin-top: 40px;
+  }
   #main-header {
     padding-bottom: 20px;
+  }
+  #main-footer{
+    margin: 20px 0;
+  }
+  .main-box{
+    height: calc(100vh - 118px);
+  }
+
+  .futer{
+    margin-top: 35px;
   }
 }
 
 @media screen and (max-width: 1000px) {
+
   .hide-mobile {
     display: none !important;
   }
-
+  .btn{
+    width: 220px;
+    margin-top: 35px;
+    font-size: 14px;
+  }
   #main-header {
     padding: 30px;
     justify-content: center;
@@ -298,7 +317,7 @@ body{
       justify-content: center;
       width: 100%;
       background-color: #fff;
-      margin-top: 50px;
+      margin-top: 80px;
       max-height: 0;
       transition: max-height .2s ease-out;
       overflow: hidden;
@@ -328,78 +347,75 @@ body{
       padding: 28px 20px;
       position: relative;
       user-select: none;
+      .navicon {
+          background: #393939;
+          display: block;
+          height: 2px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 18px;
+          &:before,
+          &:after {
+              background: #393939;
+              content: '';
+              display: block;
+              height: 100%;
+              position: absolute;
+              transition: all .2s ease-out;
+              width: 100%;
+          }
+          &:before { top: 5px; }
+          &:after  { top: -5px; }
+        }
     }
 
-    .menu-icon .navicon {
-      background: #393939;
-      display: block;
-      height: 2px;
-      position: relative;
-      transition: background .2s ease-out;
-      width: 18px;
-    }
-
-    .menu-icon .navicon:before,
-    .menu-icon .navicon:after {
-      background: #393939;
-      content: '';
-      display: block;
-      height: 100%;
-      position: absolute;
-      transition: all .2s ease-out;
-      width: 100%;
-    }
-
-    .menu-icon {
-      .navicon:before {
-        top: 5px;
-      }
-      .navicon:after {
-        top: -5px;
-      }
-    }
-
-    .menu{
-
-    }
     .menu-btn {
       display: none;
-    }
+      &:checked ~ .menu {
+        max-height: 240px;
+        padding: 35px;
+      }
 
-    .menu-btn:checked ~ .menu {
-      max-height: 240px;
-      padding: 35px;
-    }
+      &:checked ~ .menu-icon .navicon {
+        background: transparent;
+      }
 
-    .menu-btn:checked ~ .menu-icon .navicon {
-      background: transparent;
-    }
+      &:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+      }
 
-    .menu-btn:checked ~ .menu-icon .navicon:before {
-      transform: rotate(-45deg);
-    }
+      &:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+      }
 
-    .menu-btn:checked ~ .menu-icon .navicon:after {
-      transform: rotate(45deg);
-    }
-
-    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-      top: 0;
+      &:checked ~ .menu-icon:not(.steps) .navicon:before,
+      &:checked ~ .menu-icon:not(.steps) .navicon:after {
+        top: 0;
+      }
     }
   }
 
   .main-box{
-    height: auto;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    min-height: calc(100vh - 140px);
 
     h1{
       font-size: 20px;
       line-height: 30px;
       margin-top: 25px;
       text-align: center;
+    }
+  }
+
+
+  #main-footer{
+    align-items: center;
+    justify-content: space-around;
+    a{
+      margin: 0;
+      font-size: 12px;
     }
   }
 }

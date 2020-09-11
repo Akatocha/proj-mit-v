@@ -53,7 +53,14 @@ import InputBox from '../components/inputBox'
 
   @media screen and (max-width: 1460px) {
     .btn{
-      margin-top: 60px;
+        margin-top: 60px;
+      }
     }
+
+  @media screen and (max-width: 1000px) {
+      .btn{
+        margin-top: 30px;
+        width: 90%;
+      }
   }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
       <div class="wrap-input-group">
+          <span class="button-delete"><i>Remove vehicle</i></span>
           <div class="input-group">
             <select @change="selectYear" v-model="year" class="inp-text">
               <option disabled value="start">Year</option>
@@ -51,7 +52,6 @@
 
               </div>
           </div>
-          <span class="button-delete"></span>
       </div>
     </div>
 
@@ -117,8 +117,10 @@
     .wrap-input-group{
         position: relative;
         display: flex;
-        width: 100%;
         justify-content: space-between;
+        width: 100%;
+        margin-top: 25px;
+
         .input-group{
             width: 285px;
             padding: 10px;
@@ -132,11 +134,9 @@
             height: 32px;
             opacity: 0.5;
             cursor: pointer;
-
-            &:first-child{
+            i{
                 display: none;
             }
-
             &:hover {
                 opacity: 1;
             }
@@ -247,10 +247,9 @@
         color: #393939;
     }
 
-    option:disabled,
-    ::placeholder {
-           color: #B9B9B9;
-       }
+    option:disabled{
+        display: none;
+    }
    }
 
   .add-button-container {
@@ -274,6 +273,7 @@
             width: 22px;
             height: 22px;
             font-size: 18px;
+            line-height: 22px;
             color: #fff;
             background: #5FB763;
             border-radius: 2px;
@@ -288,5 +288,68 @@
 
   }
 
+  @media screen and (max-width: 1000px) {
 
+        .wrap-input-group{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+      .wrap-input-group{
+
+          .input-group{
+              padding: 0;
+              width: 90%;
+          }
+
+          .button-delete {
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              top: unset;
+              right: unset;
+              margin-bottom: 10px;
+              width: 90%;
+              background-color: #5FB763;
+              color: #fff;
+              opacity: 1;
+              border-radius: 2px;
+              i{
+                  display: inline-block;
+                  font-style: normal;
+              }
+              &:after, &:before{
+                background-color: #fff;
+              }
+          }
+      }
+      .inp-text{
+          padding: 9px 20px;
+          font-size: 13px;
+          height: 38px;
+      }
+
+
+      .checkbox-container {
+          margin: 0 0 10px;
+          justify-content: space-between;
+
+          &:hover .checkbox-custom:before{
+            background-image: none;
+          }
+
+          .label {
+              font-size: 12px;
+              margin-left: 0;
+          }
+          .bottom-desc{
+              width: 50%;
+              text-align: right;
+              font-size: 10px;
+              margin: 0;
+          }
+      }
+    }
 </style>
