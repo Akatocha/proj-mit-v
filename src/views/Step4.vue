@@ -25,13 +25,20 @@
     },
     computed: {
       valid() {
-        if(this.name !== '' && this.phone !== '' && this.email !== ''){
+        if(this.name !== '' && this.phone !== '' && this.validMail == true){
           return true
         }else {return false}
+      },
+      validMail(){
+        let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        if (reg.test(this.email)){
+          return true
+        }else{return false}
       }
     },
     methods: {
       goToNextStep() {
+        localStorage.user = JSON.stringify({name: this.name, phone: this.phone, email: this.email})
         this.$router.push('/end') 
       }
     },

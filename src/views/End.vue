@@ -17,7 +17,22 @@
 
 <script>
   export default {
-    
+    data() {
+      return {
+       user: null,
+       date: null,
+       traller: null,
+       citi_1: null,
+       citi_2: null,
+      }
+    },
+    created () {
+      this.user = JSON.parse(localStorage.user)
+      this.traller =  JSON.parse(localStorage.traller)
+      this.date =  JSON.parse(localStorage.Date)
+      this.citi_1 =  JSON.parse(localStorage.cityOne)
+      this.citi_2 =  JSON.parse(localStorage.cityTwo)
+    },
   }
 </script>
 

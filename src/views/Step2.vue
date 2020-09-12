@@ -72,9 +72,14 @@ const NOW = new Date();
     },
     methods: {
       selectDay(i){
+        if(i == undefined){
+          i = this.currDay
+        }
         this.CURR = i
         let x = `${i}.${this.currMonth+1}.${this.currYear}`
-        console.log(x)
+        // console.log(x)
+        localStorage.Date = JSON.stringify(x)
+        return x
       },
       ltMonth() {
         this.inst_date = new Date(this.currYear, this.currMonth-1)
@@ -85,6 +90,7 @@ const NOW = new Date();
     },
     created () {
       this.CURR = this.currDay;
+      localStorage.Date = JSON.stringify(this.selectDay())
     },
   }
 </script>

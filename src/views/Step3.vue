@@ -7,14 +7,14 @@
           <span class="title">Open Trailer</span>
           <span class="description">Cost less</span>
           <span class="description"> Vehicle is on open air</span>
-          <input type="radio" checked="checked" name="traller" value="Open Trailer">
+          <input type="radio" @change="changeChack" :checked="checked_1" name="traller" value="Open Trailer">
           <span class="checkmark"></span>
         </label>
         <label class="custom-checkbox">
           <span class="title">Enclosed Trailer</span>
           <span class="description">Cost more </span>
           <span class="description">Vehicle is protected from weather</span>
-          <input type="radio" name="traller" value="Enclosed Trailer">
+          <input type="radio" @change="changeChack" :checked="checked_2" name="traller" value="Enclosed Trailer">
           <span class="checkmark"></span>
         </label>
       </div>
@@ -25,7 +25,31 @@
 
 <script>
   export default {
-    
+    data() {
+      return {
+        checked_1: true,
+        checked_2: false,
+      }
+    },
+    methods: {
+      changeChack() {
+        this.checked_1 = !this.checked_1
+        this.checked_2 = !this.checked_2
+        localStorage.traller = JSON.stringify(this.traller)
+      }
+    },
+    computed: {
+      traller() {
+        if (this.checked_1){
+          return 'Open Trailer'
+        }else{
+          return 'Enclosed Trailer'
+        }
+      }
+    },
+    created () {
+      localStorage.traller = JSON.stringify(this.traller)
+    },
   }
 </script>
 
