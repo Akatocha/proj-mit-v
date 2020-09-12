@@ -7,7 +7,7 @@
         <p class="desc">
           Your quotes are calculated right now and will be sent
           to you the email address you indicated<br>
-          <a class="mail-link" href="mailto:mail_user@gmail.com">mail_user@gmail.com</a>
+          <a class="mail-link" href="mailto:mail_user@gmail.com">{{user.email}}</a>
         </p>
         <router-link tag="span" class="btn without-arrow" to="/">Create another application</router-link>
       </div>

@@ -125,9 +125,11 @@
     methods: {
       modifiedCheck(){
         this.dataInpObj.modified = !this.dataInpObj.modified
+        this.$emit('catchDataFromInput', this.modelId,this.inoperable,this.modified)
       },
       inoperableCheck(){
         this.dataInpObj.inoperable = !this.dataInpObj.inoperable
+        this.$emit('catchDataFromInput', this.modelId,this.inoperable,this.modified)
       },
       selectModel(){
         this.buttonEnabled = true
@@ -140,7 +142,7 @@
         data[i-1] = value
         localStorage.dataModel = JSON.stringify(data) 
         // console.log(this.modelId)
-        this.$emit('catchDataFromInput', this.year, this.makeId,this.modelId)
+        this.$emit('catchDataFromInput', this.modelId,this.inoperable,this.modified)
       },
       selectMake(){
         this.modelId = 'start'

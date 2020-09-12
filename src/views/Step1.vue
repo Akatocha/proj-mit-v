@@ -43,19 +43,18 @@ import InputBox from '../components/inputBox'
     methods: {
       goTostep2(){
         this.$router.push('/step2')
+        localStorage.modelAutoArr = JSON.stringify(this.ArrayData)
       },
       upValid(state, i){
-         console.log(state)
          this.satusValidInp = state
          this.statusParent = true
       },
       returnI(i){
         return i
       },
-      catchDataFromInput(year, makeId, modelId){
-        // console.log(year, makeId, modelId)
+      catchDataFromInput(modelId, inoperable, modified){
         
-        this.ArrayData[this.repeatCoutn-1] = modelId
+        this.ArrayData[this.repeatCoutn-1] = {modelId: modelId, inoperable:inoperable, modified:modified}
       },
       addInput(){
         this.repeatCoutn = this.repeatCoutn +1
@@ -64,6 +63,7 @@ import InputBox from '../components/inputBox'
       deleteInp(){
         this.repeatCoutn --
         this.statusParent = true
+        this.ArrayData.pop()
       }
 
 
