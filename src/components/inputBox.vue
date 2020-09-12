@@ -1,7 +1,9 @@
 <template>
   <div>
       <div class="wrap-input-group">
-          <span class="button-delete"><i>Remove vehicle</i></span>
+          <span 
+          v-if="showButton"
+          @click="deleteInp()" class="button-delete"><i>Remove vehicle</i></span>
           <div class="input-group">
             <select @change="selectYear" v-model="year" class="inp-text">
               <option disabled value="start">Year</option>
@@ -12,7 +14,7 @@
             </select>
 
               <label class="checkbox-container">
-                  <input type="checkbox">
+                  <input @change="inoperableCheck" v-model="inoperable" type="checkbox">
                   <span class="checkbox-custom"></span>
                   <span class="label">Inoperable</span>
                   <span class="bottom-desc">Doesn`t Run</span>
@@ -28,7 +30,8 @@
               :value="make.id">{{make.value}} </option>
             </select>
               <label class="checkbox-container">
-                  <input type="checkbox">
+                  <input @change="modifiedCheck"
+                  v-model="modified" type="checkbox">
                   <span class="checkbox-custom"></span>
                   <span class="label">Modified</span>
                   <span class="bottom-desc">Lift kits, large tires, extra weight, ets.</span>
@@ -59,6 +62,14 @@
 
 <script>
   export default {
+    props: {
+      i: {
+        type: Number
+      },
+      repeatCoutn: {
+        type: Number
+      },
+    },
     data() {
       return {
         year: 'start',
@@ -67,10 +78,30 @@
         responseMake: null,
         responseModel: null,
         buttonEnabled: false,
-        showButton: true,
+        inoperable: false,
+        modified: false,
+        dataInpObj:{
+          year: null,
+          make: null,
+          model: null,
+          inoperable: false,
+          modified: false          
+        }
       }
     },
     computed: {
+      valid(){
+        if (this.year !== 'start' && this.makeId !== 'start' && this.modelId !=='start'){
+          return true
+        }else{
+          return false
+        }
+      },
+      showButton(){
+        if(this.repeatCoutn == this.i){
+          return true
+        }else{return false}
+      },
       yearsArr() {
         let years = []
         for (let i = 2021; i >= 1917; i--){
@@ -82,14 +113,42 @@
         return years
       }
     },
+    watch: {
+      valid(newValue, oldValue) {
+        if (this.valid){
+          this.$emit('valid', true, this.i)
+        }else{
+          this.$emit('valid', false, this.i)
+        }
+      }
+    },
     methods: {
+      modifiedCheck(){
+        this.dataInpObj.modified = !this.dataInpObj.modified
+      },
+      inoperableCheck(){
+        this.dataInpObj.inoperable = !this.dataInpObj.inoperable
+      },
       selectModel(){
         this.buttonEnabled = true
+        this.dataInpObj.model = this.modelId
+        this.inoperable = false
+        this.modified = false
+        let data = new Array
+        let i = this.i
+        let value = this.dataInpObj
+        data[i-1] = value
+        localStorage.dataModel = JSON.stringify(data) 
         // console.log(this.modelId)
-        this.$emit('catchDataFromInput', this.modelId)
+        this.$emit('catchDataFromInput', this.year, this.makeId,this.modelId)
       },
       selectMake(){
+        this.modelId = 'start'
         let idMake = this.makeId
+        this.dataInpObj.make = this.makeId
+        this.dataInpObj.model = null
+        this.inoperable = false
+        this.modified = false
         this.axios.get(`https://quotebooster.com/api/model/by_make_id.json?make_id=${idMake}`)
         .then((response) => {
           // console.log(response.data)
@@ -97,7 +156,17 @@
         }).catch(err => console.log(err))
       },
       selectYear(){
+        this.responseModel = null
         let year = this.year
+        this.dataInpObj.year = this.year
+        this.dataInpObj.make = null
+        this.dataInpObj.model = null
+        this.dataInpObj.inoperable = false
+        this.dataInpObj.modified = false
+        this.inoperable = false
+        this.modified = false
+        this.makeId = 'start'
+        this.modelId = 'start'
         this.axios.get(`https://quotebooster.com/api/make/by_year.json?year=${year}`)
         .then((response) => {
           // console.log(response.data)
@@ -106,7 +175,10 @@
       },
       addInput(){
         this.$emit('addInput')
-        this.showButton = false
+        // this.showButton = false
+      },
+      deleteInp(){
+        this.$emit('deleteInp', this.i)
       }
     },
   }

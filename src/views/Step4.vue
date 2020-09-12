@@ -4,18 +4,37 @@
       <h1>We`ve found great rates for you!</h1>
       <p class="desc">You`re one click away from viewing your matches.</p>
       <div id="info-form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="phone" placeholder="Phone number" required>
-        <input type="email" name="phone" placeholder="Email" value="mail_user@gmail.com" required>
+        <input v-model="name" type="text" name="name" placeholder="Name" required>
+        <input class="number" v-model="phone" type="number" name="phone" placeholder="Phone number" required>
+        <input v-model="email" type="email" name="phone" placeholder="Email" required>
       </div>
-      <router-link tag="span" class="btn without-arrow" to="/end">Get My Car Shipping Quotes</router-link>
+      <button :disabled='!valid' @click="goToNextStep"
+       class="btn without-arrow" >Get My Car Shipping Quotes</button>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    
+    data() {
+      return {
+        name: '',
+        phone: '',
+        email: ''
+      }
+    },
+    computed: {
+      valid() {
+        if(this.name !== '' && this.phone !== '' && this.email !== ''){
+          return true
+        }else {return false}
+      }
+    },
+    methods: {
+      goToNextStep() {
+        this.$router.push('/end') 
+      }
+    },
   }
 </script>
 
@@ -55,5 +74,7 @@
       }
     }
   }
-
+.number{
+  appearance: none !important;
+}
 </style>

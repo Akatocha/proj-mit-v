@@ -4,9 +4,13 @@
       <h1>What car you shipping?</h1>
 
         <InputBox v-for="i in repeatCoutn" :key="i"
+        :i='returnI(i)'
+        :repeatCoutn='repeatCoutn'
+        @valid='upValid'
+        @deleteInp='deleteInp'
         @addInput="addInput"
         @catchDataFromInput='catchDataFromInput'></InputBox>
-      <router-link tag="span" class="btn" to="/step2">Next step</router-link>
+      <button :disabled='!validTrue' @click="goTostep2"  class="btn">Next step</button>
     </div>
   </div>
 </template>
@@ -25,16 +29,41 @@ import InputBox from '../components/inputBox'
         ArrayData: [
         ],
         repeatCoutn: 1,
+        satusValidInp: false,
+        statusParent: true,
+      }
+    },
+    computed: {
+      validTrue() {
+        if(this.satusValidInp == true && this.statusParent == true){
+          return true
+        }else{return false}
       }
     },
     methods: {
-      catchDataFromInput(modelId){
-        console.log(modelId)
+      goTostep2(){
+        this.$router.push('/step2')
+      },
+      upValid(state, i){
+         console.log(state)
+         this.satusValidInp = state
+         this.statusParent = true
+      },
+      returnI(i){
+        return i
+      },
+      catchDataFromInput(year, makeId, modelId){
+        // console.log(year, makeId, modelId)
         
         this.ArrayData[this.repeatCoutn-1] = modelId
       },
       addInput(){
         this.repeatCoutn = this.repeatCoutn +1
+        this.statusParent = false
+      },
+      deleteInp(){
+        this.repeatCoutn --
+        this.statusParent = true
       }
 
 
