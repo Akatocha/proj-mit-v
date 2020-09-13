@@ -35,7 +35,9 @@
       this.citi_2 =  JSON.parse(localStorage.cityTwo)
       this.model_auto =  JSON.parse(localStorage.modelAutoArr)
 
-      this.axios.post('https://jsonplaceholder.typicode.com/posts', {
+      // https://jsonplaceholder.typicode.com/posts
+
+      this.axios.post('https://quotebooster.com/api/send-car-form', {
         user: localStorage.user,
         traller: localStorage.traller,
         date: localStorage.Date,
