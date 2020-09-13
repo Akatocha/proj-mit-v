@@ -140,7 +140,6 @@
         let i = this.i
         let value = this.dataInpObj
         data[i-1] = value
-        localStorage.dataModel = JSON.stringify(data) 
         // console.log(this.modelId)
         this.$emit('catchDataFromInput', this.modelId,this.inoperable,this.modified)
       },

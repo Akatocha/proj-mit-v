@@ -24,6 +24,7 @@
        traller: null,
        citi_1: null,
        citi_2: null,
+       model_auto: [],
       }
     },
     created () {
@@ -32,6 +33,23 @@
       this.date =  JSON.parse(localStorage.Date)
       this.citi_1 =  JSON.parse(localStorage.cityOne)
       this.citi_2 =  JSON.parse(localStorage.cityTwo)
+      this.model_auto =  JSON.parse(localStorage.modelAutoArr)
+
+      this.axios.post('https://jsonplaceholder.typicode.com/posts', {
+        user: localStorage.user,
+        traller: localStorage.traller,
+        date: localStorage.Date,
+        citi_1: localStorage.cityOne,
+        citi_2: localStorage.cityTwo,
+        model_auto: localStorage.modelAutoArr
+
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+  });
     },
   }
 </script>
