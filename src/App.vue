@@ -237,6 +237,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
   margin-top: 60px;
   height: 53px;
   width: 270px;
@@ -245,17 +248,15 @@ body{
   border-radius: 5px;
   cursor: pointer;
   color: #FFFFFF;
-  font-weight: 500;
-  font-size: 16px;
-  text-decoration: none;
+  border: none;
 
   &:after{
     width: 24px;
-    font-weight: 400;
+    font-weight: 100;
     content: '>';
     font-style: initial;
     font-size: 24px;
-    margin-left: 9px;
+    margin-left: 4px;
   }
 
   &.without-arrow:after{
