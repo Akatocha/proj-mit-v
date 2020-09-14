@@ -70,6 +70,14 @@
     color: #B9B9B9;
   }
 
+  input[type='number'] {
+    -moz-appearance:textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   @media screen and (max-width: 1000px) {
     #info-form
@@ -81,7 +89,5 @@
       }
     }
   }
-.number{
-  appearance: none !important;
-}
+
 </style>
