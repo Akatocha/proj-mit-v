@@ -28,6 +28,10 @@
       }
     },
     created () {
+      if(!localStorage.user){
+        this.$router.push('/step4')
+      }
+
       this.user = JSON.parse(localStorage.user)
       this.traller =  JSON.parse(localStorage.traller)
       this.date =  JSON.parse(localStorage.Date)

@@ -42,6 +42,11 @@
         this.$router.push('/end') 
       }
     },
+    created () {
+      if(!localStorage.traller || !localStorage.cityOne || !localStorage.cityTwo){
+        this.$router.push('/step3')
+      }
+    },
   }
 </script>
 

@@ -68,6 +68,11 @@ import InputBox from '../components/inputBox'
 
 
     },
+    created () {
+      if(!localStorage.cityOne || !localStorage.cityTwo){
+        this.$router.push('/')
+      }
+    },
   }
 </script>
 
