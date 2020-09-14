@@ -262,9 +262,6 @@ body{
   &.without-arrow:after{
     display: none;
   }
-  &[disabled="disabled"]{
-    opacity: 0.5;
-  }
 }
 
 
