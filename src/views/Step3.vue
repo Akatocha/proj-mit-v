@@ -48,6 +48,9 @@
       }
     },
     created () {
+      if(!localStorage.Date || !localStorage.cityOne || !localStorage.cityTwo){
+        this.$router.push('/step2')
+      }
       localStorage.traller = JSON.stringify(this.traller)
     },
   }

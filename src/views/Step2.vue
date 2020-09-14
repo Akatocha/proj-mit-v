@@ -89,6 +89,9 @@ const NOW = new Date();
       }
     },
     created () {
+      if(!localStorage.modelAutoArr){
+        this.$router.push('/step1')
+      }
       this.CURR = this.currDay;
       localStorage.Date = JSON.stringify(this.selectDay())
     },
